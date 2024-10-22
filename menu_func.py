@@ -1,19 +1,16 @@
 from sp_game import start_1p_game
-from mp_game import start_2p_game
-from results import show_scores
+from mp_game import start_mp_game
 
 
 def choice(number):
     if number == '1':
         start_1p_game()
     elif number == '2':
-        start_2p_game()
+        start_mp_game()
     elif number == '3':
-        show_scores()
-    elif number == '4':
         exit()
     else:
-        new_number = input("Incorrect input, choose an option:")
+        new_number = input("Incorrect input, choose an option:\n")
         choice(new_number)
 
 
@@ -23,6 +20,5 @@ def show_menu():
     print("Choose:")
     print("1 - start a single-player game.")
     print("2 - start a multiplayer game.")
-    print("3 - show previous scores.")
-    print("4 - exit the game.")
+    print("3 - exit the game.")
 

@@ -5,11 +5,12 @@ from menu_func import show_menu, choice
 
 def main():
 
+
     # show menu options
     show_menu()
-    chosen_option = input("What do you want to do?")
-    # user chooses an option
+    chosen_option = input("What do you want to do?\n")
 
+    # user chooses an option
     choice(chosen_option)
 
 
