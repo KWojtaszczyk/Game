@@ -4,14 +4,14 @@ from mp_game import start_mp_game
 
 def choice(number):
     if number == '1':
-        start_1p_game()
+        return start_1p_game()
     elif number == '2':
-        start_mp_game()
+        return start_mp_game()
     elif number == '3':
         exit()
     else:
         new_number = input("Incorrect input, choose an option:\n")
-        choice(new_number)
+        return choice(new_number)
 
 
 def show_menu():

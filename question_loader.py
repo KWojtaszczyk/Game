@@ -8,16 +8,10 @@ def load_questions(question_file):
     return questions_list
 
 
-def save_results(result_file, updated_rows):
-    with open(result_file, mode='w', encoding='utf-8', newline='') as output_file:
-        csv_writer = csv.writer(output_file)
-        csv_writer.writerows(updated_rows)
+def save_results(result_file, user_profile):
+    with open(result_file, mode='a', encoding='utf-8') as output_file:
+        output_file.write(f"\n{user_profile}")
     print(f"Results saved to {result_file}")
-
-
-def show_results(result):
-    print("Quiz completed! Here are the final results:")
-    print(f"{result[0]}: {result[1]} points")
 
 
 def ask_question(row):
@@ -31,8 +25,8 @@ def ask_question(row):
 def get_answer_to_question():
     answer = input("Enter your answer (A, B, C, or D): ").strip().upper()
 
-    while answer not in ['A', 'B', 'C', 'D']:
-        print("Invalid answer. Please enter A, B, C, or D.")
+    if answer not in ['A', 'B', 'C', 'D']:
+        print("Invalid answer.")
         get_answer_to_question()
 
     return answer
