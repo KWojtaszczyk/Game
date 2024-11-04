@@ -1,56 +1,28 @@
-from sp_game import start_1p_game
-import random
-from question_loader import load_questions, save_results, ask_question, get_answer_to_question, check_the_answer
+from question_loader import get_questions_ready, save_results, ask_question
+from input_and_check import get_answer_to_question, check_the_answer, get_p_number, get_q_number, create_player
 
-file_name = 'Q&A.csv'
+
 output_file_name = 'Q&A_points.txt'
-
-
-def get_p_number():
-    input_str = input("How many players?\n")
-    if input_str.isdigit():
-        player_number = int(input_str)
-        if player_number == 1:
-            print("Opening single player mode")
-            start_1p_game()
-            exit()
-        elif player_number in range(1, 6):
-            print(f"Opening the game for {player_number} players")
-            return player_number
-        elif player_number >= 6:
-            print("Too many players. Game only available up to 5 players. Choose again")
-            return get_p_number()
-        else:
-            print("Incorrect input, choose a number between 1 and 5")
-            return get_p_number()
-    else:
-        print("Incorrect input, choose a number between 1 and 5")
-        return get_p_number()
-
-
-def create_player():
-    player_name = input("What's your name?\n")
-    return player_name
 
 
 def start_mp_game():
     num_players = get_p_number()
+    num_questions = get_q_number()
+    chosen_questions = get_questions_ready(num_questions)
     player_dict = {}
     for i in range(num_players):
         print(f"Player {i + 1}")
         player_dict[create_player()] = 0
-    mp_quiz_game(player_dict)
+    mp_quiz_game(player_dict, chosen_questions)
 
 
-def mp_quiz_game(player_info):
-    questions = load_questions(file_name)
-    random.shuffle(questions)
-    for i in questions:
+def mp_quiz_game(player_info, question_dict):
+    for i in question_dict:
         for j in player_info.keys():
             print(f"{j}'s turn:")
             ask_question(i)
             player_answer = get_answer_to_question()
-            if check_the_answer(player_answer, i) == 1:
+            if check_the_answer(player_answer, i):
                 player_info[j] += 1
     for k in player_info.keys():
         user_profile = str(f"{k} scored {player_info[k]} points")

@@ -1,4 +1,7 @@
 import csv
+import random
+
+file_name = 'Q&A.csv'
 
 
 def load_questions(question_file):
@@ -22,19 +25,8 @@ def ask_question(row):
     print(f"D) {row[4]}")
 
 
-def get_answer_to_question():
-    answer = input("Enter your answer (A, B, C, or D): ").strip().upper()
-
-    if answer not in ['A', 'B', 'C', 'D']:
-        print("Invalid answer.")
-        get_answer_to_question()
-
-    return answer
-
-
-def check_the_answer(answer, row):
-    correct_answer = row[5]
-    if answer == correct_answer:
-        return 1
-    else:
-        return 0
+def get_questions_ready(question_choice):
+    questions = load_questions(file_name)
+    random.shuffle(questions)
+    numbered_questions = questions[:question_choice]
+    return numbered_questions
