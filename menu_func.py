@@ -21,4 +21,3 @@ def show_menu():
     print("1 - start a single-player game.")
     print("2 - start a multiplayer game.")
     print("3 - exit the game.")
-
