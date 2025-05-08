@@ -15,7 +15,7 @@ def get_p_number():
 
         player_number = int(input_str)
 
-        if player_number == 1:
+        if player_number == 1 or player_number == 0:
             print("Too few players")
         elif 2 <= player_number <= 5:
             print(f"Opening the game for {player_number} players")

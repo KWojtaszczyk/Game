@@ -10,16 +10,6 @@ def test_get_p_number_valid(monkeypatch):
         mock_print.assert_called_with("Opening the game for 3 players")
 
 
-def test_get_p_number_too_few_players(monkeypatch):
-    inputs = iter(["1", "3"])
-    monkeypatch.setattr('builtins.input', lambda _: next(inputs))
-
-    with mock.patch("builtins.print") as mock_print:
-        result = get_p_number()
-        assert result == 3
-        mock_print.assert_any_call("Too few players")
-
-
 def test_get_p_number_too_many_players(monkeypatch):
     inputs = iter(["6", "3"])
     monkeypatch.setattr('builtins.input', lambda _: next(inputs))

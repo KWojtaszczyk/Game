@@ -1,7 +1,7 @@
 from menu_func import show_menu, choice
 
 
-# Create a main entry to the app
+# Create a main entry to the webapp
 
 
 def main():
