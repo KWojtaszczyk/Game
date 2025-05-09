@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+    <head>
+      {% if title %}
+      <title>{{ title }}</title>
+      {% else %}
+      <title>Welcome to the Game</title>
+      {% endif %}
+    </head>
+    <body>
+        <div>The Game: <a href="/index">Main Menu</a></div>
+        <hr>
+        {% block content %}{% endblock %}
+    </body>
+</html>
